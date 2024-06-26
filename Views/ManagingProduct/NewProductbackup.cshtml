@@ -1,0 +1,78 @@
+@model ShoppyMcShopFace.Models.Product
+
+<form asp-action="CreateProduct" method="post">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ImageURL"></label>
+        <input asp-for="ImageURL" class="form-control" />
+        <span asp-validation-for="ImageURL" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Price"></label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Stock"></label>
+        <input asp-for="Stock" class="form-control" />
+        <span asp-validation-for="Stock" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Brand"></label>
+        <input asp-for="Brand" class="form-control" />
+        <span asp-validation-for="Brand" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Category"></label>
+        <input asp-for="Category" class="form-control" />
+        <span asp-validation-for="Category" class="text-danger"></span>
+    </div>
+
+    <h4>Tags</h4>
+    <div id="tags-container">
+        <div class="form-group tag-key-value">
+            <div class="row">
+                <div class="col">
+                    <input name="Tags[0].Key" class="form-control tag-key" placeholder="Tag Key" />
+                </div>
+                <div class="col">
+                    <input name="Tags[0].Value" class="form-control tag-value" placeholder="Tag Value" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="button" id="add-tag" class="btn btn-primary">Add Tag</button>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function () {
+            var tagIndex = 1;
+            $("#add-tag").click(function () {
+                var tagInput = '<div class="form-group tag-key-value">' +
+                                    '<div class="row">' +
+                                        '<div class="col">' +
+                                            '<input name="Tags[' + tagIndex + '].Key" class="form-control tag-key" placeholder="Tag Key" />' +
+                                        '</div>' +
+                                        '<div class="col">' +
+                                            '<input name="Tags[' + tagIndex + '].Value" class="form-control tag-value" placeholder="Tag Value" />' +
+                                        '</div>' +
+                                    '</div>' +
+                                '</div>';
+                $("#tags-container").append(tagInput);
+                tagIndex++;
+            });
+        });
+    </script>
+}

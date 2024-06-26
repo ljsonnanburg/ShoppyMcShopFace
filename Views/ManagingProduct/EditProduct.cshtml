@@ -1,0 +1,42 @@
+@model Product
+
+<form asp-action="UpdateProduct" asp-route-productId="@Model.ProductId" asp-controller="ManagingProduct" method="post">
+    <div class="form-group">
+        <input type="hidden" asp-for="ProductId" />
+        <input type="hidden" asp-for="ProductStatus" />
+        <input type="hidden" asp-for="CreatedAt" />
+        <input type="hidden" asp-for="CreatorId" />
+
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="ImageURL" class="control-label"></label>
+        <input asp-for="ImageURL" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Price" class="control-label"></label>
+        <input asp-for="Price" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Stock" class="control-label"></label>
+        <input asp-for="Stock" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Description" class="control-label"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+        <label asp-for="Brand" class="control-label"></label>
+        <textarea asp-for="Brand" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+        <label asp-for="Category" class="control-label"></label>
+        <input asp-for="Category" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="TagsJSON" class="control-label"></label>
+        <input asp-for="TagsJSON" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>

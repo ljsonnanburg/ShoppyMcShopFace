@@ -1,0 +1,32 @@
+@model ShoppyMcShopFace.Models.Product
+@using Newtonsoft.Json.Linq
+
+<div class="row">
+    <div class="col-6">
+        <h1>@Model.Name</h1>
+        <img src="@Model.ImageURL" alt="" />
+    </div>
+    <div class="col-6">
+        <p>@Model.Description</p>
+        <p>$@Model.Price</p>
+        <p>@Model.Stock</p>
+        
+        @{
+            JObject tags = null;
+            if (!string.IsNullOrEmpty(Model.TagsJSON))
+            {
+                tags = JObject.Parse(Model.TagsJSON);
+            }
+        }
+        
+        @if (tags != null)
+        {
+            <ul>
+                @foreach (var tag in tags)
+                {
+                    <li><strong>@tag.Key:</strong> @tag.Value</li>
+                }
+            </ul>
+        }
+    </div>
+</div>

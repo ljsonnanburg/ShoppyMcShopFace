@@ -1,0 +1,45 @@
+@* <form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="file">Select CSV File:</label>
+        <input type="file" name="file" id="file" class="form-control-file">
+    </div>
+    <button type="submit" class="btn btn-primary">Upload</button>
+</form> *@
+
+@{
+    ViewData["Title"] = "Upload CSV";
+}
+
+<h1>Upload CSV</h1>
+
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="file">Select CSV File:</label>
+        <input type="file" name="file" id="file" class="form-control-file">
+    </div>
+    <button type="submit" class="btn btn-primary">Upload</button>
+</form>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger mt-3">
+        <strong>Error:</strong> @ViewBag.Error
+    </div>
+}
+
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-success mt-3">
+        @ViewBag.Message
+    </div>
+}
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger mt-3">
+        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <p>@error.ErrorMessage</p>
+        }
+    </div>
+}

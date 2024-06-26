@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_EmptyLayout";
+}
+
+<div class="text-center">
+    <h1>Please log in or register to continue</h1>
+    <div class="row">
+        <div class="col">
+            @await Html.PartialAsync("_Register", new User())
+        </div>
+        <div class="col">
+            @await Html.PartialAsync("_RegisterAdmin", new User())
+        </div>
+        <div class="col">
+            @await Html.PartialAsync("_Login", new LogUser())
+        </div>
+    </div>
+    <div>
+    </div>
+</div>

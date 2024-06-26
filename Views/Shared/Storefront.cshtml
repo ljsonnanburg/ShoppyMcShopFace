@@ -1,0 +1,36 @@
+@model List<Product>
+@{
+    int? UserId = Context.Session.GetInt32("UserId");
+}
+
+<div class="d-flex flex-wrap flex-row">
+    @foreach (Product p in Model)
+    {
+        bool outOfStock = p.Stock == 0;
+        <div class="border m-3">
+            @* <form asp-action="ViewProduct" asp-controller="Product" asp-route-productId="@p.ProductId" method="Post"> *@
+                <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="ViewProduct" asp-route-productId="@p.ProductId">
+                <div>
+                    
+                    @* <a href="/@p.ProductId"> *@
+                        <img src="@p.ImageURL" alt="" />
+                    @* </a> *@
+                </div>
+                <div>
+                    @* <a href="/@p.ProductId"> *@
+                        <span>@p.Name <span><i>$@p.Price</i></span></span>
+                    @* </a> *@
+                </div>
+                </a>
+            @* </form> *@
+            @* <ul>
+            @foreach (var tagOfProduct in p.TagsOfProduct)
+                {
+                    <li>@tagOfProduct.TagInCorrelation.Name</li>
+                }
+            </ul> *@
+        </div>
+    }
+</div>
+
+
